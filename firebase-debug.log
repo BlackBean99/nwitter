@@ -1,0 +1,39 @@
+[debug] [2020-10-19T03:54:58.359Z] ----------------------------------------------------------------------
+[debug] [2020-10-19T03:54:58.362Z] Command:       /usr/bin/node /usr/bin/firebase init
+[debug] [2020-10-19T03:54:58.362Z] CLI Version:   8.12.1
+[debug] [2020-10-19T03:54:58.362Z] Platform:      linux
+[debug] [2020-10-19T03:54:58.362Z] Node Version:  v12.18.4
+[debug] [2020-10-19T03:54:58.363Z] Time:          Mon Oct 19 2020 12:54:58 GMT+0900 (Korean Standard Time)
+[debug] [2020-10-19T03:54:58.363Z] ----------------------------------------------------------------------
+[debug] [2020-10-19T03:54:58.363Z] 
+[debug] [2020-10-19T03:54:58.371Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2020-10-19T03:54:58.371Z] > authorizing via signed-in user
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  /mnt/c/Users/ymecc/Desktop/Praogramming/Code/nwitter
+
+Before we get started, keep in mind:
+
+  * You are currently outside your home directory
+
+[debug] [2020-10-19T04:43:50.205Z] Error: write EIO
+    at afterWriteDispatched (internal/stream_base_commons.js:154:25)
+    at writeGeneric (internal/stream_base_commons.js:145:3)
+    at WriteStream.Socket._writeGeneric (net.js:786:11)
+    at WriteStream.Socket._write (net.js:798:8)
+    at doWrite (_stream_writable.js:403:12)
+    at writeOrBuffer (_stream_writable.js:387:5)
+    at WriteStream.Writable.write (_stream_writable.js:318:11)
+    at EventEmitter.signalExit.alwaysLast (/usr/lib/node_modules/firebase-tools/node_modules/restore-cursor/index.js:7:18)
+    at EventEmitter.emit (events.js:315:20)
+    at EventEmitter.emit (domain.js:483:12)
+    at emit (/usr/lib/node_modules/firebase-tools/node_modules/signal-exit/index.js:78:11)
+    at process.listener (/usr/lib/node_modules/firebase-tools/node_modules/signal-exit/index.js:94:7)
+    at process.emit (events.js:315:20)

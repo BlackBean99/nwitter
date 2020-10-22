@@ -6,7 +6,7 @@ import Home from "../routes/Home";
 
 
 const AppRouter= () => {
-    const [isLoggedIn, setIsLoggedIn] = useState(true);
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
     console.log(setIsLoggedIn);
     return(
         <Router>
@@ -16,7 +16,9 @@ const AppRouter= () => {
                 <Route exact path="/">
                     <Home/>
                 </Route>
-                </> ):( <Route><Auth/></Route>
+                </> ):( <Route exact path="/">
+                    <Auth/>
+                    </Route>
                 )}
                 </Switch>
         </Router>
