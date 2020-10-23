@@ -3,9 +3,7 @@ import AppRouter from "component/Router";
 import {authService} from "fBase";
 
 function App() {
-  console.log(authService.currentUser);
   const [init,setInit] = useState(false);
-  console.log(init,setInit);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   
   useEffect(()=>{
@@ -17,12 +15,11 @@ function App() {
         } setInit(true);
       });
   },[]);
-  
-  console.log(setIsLoggedIn);
+  console.log({isLoggedIn});
+
   return (
     <>
-    {init ?
-    <AppRouter isLoggedIn={isLoggedIn}/> : "initializing"}
+    {init ? <AppRouter isLoggedIn={isLoggedIn}/> : "initializing"}
     <footer> &copy; Nwitter {new Date().getFullYear()} </footer>
     </>
   );
