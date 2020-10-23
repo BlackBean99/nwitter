@@ -1,5 +1,7 @@
 import * as firebase from 'firebase/app';
 import "firebase/auth";
+import "firebase/firestore";
+
 var firebaseConfig = {
   apiKey: "AIzaSyDZiXzSSDNTbcemM1rNMiDp3j3tpgwqpWw",
   authDomain: "nwitter-65ff6.firebaseapp.com",
@@ -15,3 +17,5 @@ firebase.initializeApp(firebaseConfig);
 export const firebaseInstance = firebase;
 
 export const authService = firebase.auth();
+
+export const dbService = firebase.firestore();
