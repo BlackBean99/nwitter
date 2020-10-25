@@ -6,7 +6,7 @@ import { v4 as uuidv4 } from "uuid";
 const Home = ({userObj}) => {
     const [nweet, setNweet] = useState("");
     const [nweets, setNweets] = useState([]);
-    const [attachment, setAttachment] = useState();
+    const [attachment, setAttachment] = useState("");
 
     useEffect(()=>{
         dbService.collection("nweets").onSnapshot((snapshot)=>{
@@ -49,7 +49,7 @@ const Home = ({userObj}) => {
         
         const attachmentRef = storageService.ref().child(`${userObj.uid}/${uuidv4()}`);
         const response = await attachmentRef.putString(attachment, "data_url");
-        const attachmentUrl = await response.ref.getDownloadURL();
+        attachmentUrl = await response.ref.getDownloadURL();
         }
         const nweetObj = {
             text:nweet,

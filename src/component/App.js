@@ -1,5 +1,5 @@
 import React,{useState, useEffect} from 'react';
-import AppRouter from "component/Router";
+import AppRouter from "component/router";
 import {authService} from "fBase";
 
 function App() {
@@ -7,11 +7,20 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userObj, setUserObj] = useState(null);
 
+  const refreshUser =() =>{
+    const user = authService.currentUser;
+    setUserObj(Object.assign({},user));
+  }
+
   useEffect(()=>{
       authService.onAuthStateChanged((user)=>{
       if(user){
         setIsLoggedIn(true);
-        setUserObj(user);
+        setUserObj({
+          displayName : user.displayName,
+          uid:user.uid,
+          updateProfile : (args)=> user.updateProfile(args),
+        });
         }else{
           setIsLoggedIn(false);
         } setInit(true);
@@ -20,7 +29,7 @@ function App() {
 
   return (
     <>
-    {init ? <AppRouter userObj={userObj} isLoggedIn={isLoggedIn}/> : "initializing"}
+    {init ? <AppRouter refreshUser ={refreshUser} userObj={userObj} isLoggedIn={isLoggedIn}/> : "initializing"}
     <footer> &copy; Nwitter {new Date().getFullYear()} </footer>
     </>
   );
