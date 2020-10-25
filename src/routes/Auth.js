@@ -1,48 +1,10 @@
 import { authService, firebaseInstance} from "fBase";
-import React,{useState} from "react";
+import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {faTwitter, faGoogle, faGithub} from "@fortawesome/free-brands-svg-icons";
+import AuthForm from "component/AuthForm";
+
 const Auth = () =>{
-	const [email, setEmail] = useState("");
-
-	const [password, setPassword] = useState("");
-
-	const [newAccount, setNewAccount] = useState(true);
-	const [error, setError] = useState("");
-
-	const onChange = (event) =>{
-		const {target:{name,value}} = event;
-		if(name ==="email"){
-			setEmail(value);  
-		}else if(name==="password"){
-			setPassword(value);
-		}
-		
-	}
-
-	const onSubmit = async(event) =>{
-		event.preventDefault();
-		let data;
-		
-		try {
-			if(newAccount){
-				// create NewAccount
-				data =await authService.createUserWithEmailAndPassword(email, password);
-					console.log(data);
-					
-			} else {
-				data = await authService.signInWithEmailAndPassword(email,password);
-				console.log(data);
-			}
-			console.log(data);
-		} catch (error) {
-			setError(error.message);
-
-		}
-	}
-	const toggleAccount = () =>{
-		setNewAccount((prev)=> !prev)
-	}
-
-
 
 	const onSocialClick = async(event) =>{
 		console.log(event.target.name);
@@ -58,20 +20,23 @@ const Auth = () =>{
 		}
 		await authService.signInWithPopup(provider);
 	}
-	
 
 	return(
-	<div>
-			<form onSubmit={onSubmit}>
-				<input name="email" type="text" placeholder="Email" required value={email} onChange={onChange}/>
-				<input name="password" type="password" placeholder="password" required value={password} onChange={onChange}/>
-				<input type="submit" value={newAccount ? "Create Account" : "Sign In"}/>
-			</form>
-			<span onClick={toggleAccount}>{newAccount ? "Sign in." : "Create Account"}</span>
-			<p>{error}</p>
-			<div>
-				<button onClick={onSocialClick} name="google">Continue with Google</button>
-				<button onClick={onSocialClick} name="github">Continue with GitHub</button>
+		<div className="authContainer">
+		<FontAwesomeIcon
+			icon={faTwitter}
+			color={"#04AAFF"}
+			size="3x"
+			style={{ marginBottom: 30 }}
+		/>
+			<AuthForm/>
+			<div className="authBtns">
+        		<button onClick={onSocialClick} name="google" className="authBtn"> Continue with Google 
+					<FontAwesomeIcon icon={faGoogle} /> 
+				</button>
+				<button onClick={onSocialClick} name="github" className="authBtn">Continue with Github 
+					<FontAwesomeIcon icon={faGithub} />
+				</button>
 			</div>
 	</div>)
 };
