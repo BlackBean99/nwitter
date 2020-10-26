@@ -4,9 +4,6 @@ import { v4 as uuidv4 } from "uuid";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faTimes } from "@fortawesome/free-solid-svg-icons";
 
-
-
-
 const NweetFactory = ({userObj}) =>{
     const [nweet, setNweet] = useState("");
     const [attachment, setAttachment] = useState("");
